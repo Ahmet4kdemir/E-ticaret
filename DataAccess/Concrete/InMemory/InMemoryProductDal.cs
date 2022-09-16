@@ -27,14 +27,14 @@ namespace DataAccess.Concrete.InMemory
 
             };
         }
-        public List<Product> GetAll()
-        {
-            return _products;
-        }
+        //public List<Product> GetAll()
+        //{
+        //    return _products;
+        //}
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return _products;
         }
 
         public Product Get(Expression<Func<Product, bool>> filter)

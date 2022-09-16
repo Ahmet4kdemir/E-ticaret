@@ -4,7 +4,8 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
-using Entities.Abstract;
+using Core.Entities;
+
 
 namespace Entities.Concrete
 {

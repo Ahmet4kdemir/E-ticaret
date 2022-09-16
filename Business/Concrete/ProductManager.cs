@@ -35,5 +35,10 @@ namespace Business.Concrete
         {
             return _productDal.GetAll(p => p.UnitPrice <= max && p.UnitPrice >= min);
         }
+
+        public void Add(Product product)
+        {
+            _productDal.Add(product);
+        }
     }
 }
