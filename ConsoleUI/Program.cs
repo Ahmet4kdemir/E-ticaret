@@ -12,13 +12,17 @@ namespace ConsoleUI
         {
             ProductManager _productManager = new ProductManager(new EfProductDal());
             //GetByUnitPriceTest(_productManager);
-            //ProductTest(_productManager);
+            ProductTest(_productManager);
+            //CategoryTest();
+        }
+
+        private static void CategoryTest()
+        {
             CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
             foreach (var category in _categoryManager.GetAll())
             {
                 Console.WriteLine(category.CategoryName);
             }
-
         }
 
         private static void GetByUnitPriceTest(ProductManager _productManager)
@@ -39,11 +43,10 @@ namespace ConsoleUI
 
         private static void ProductTest(ProductManager _productManager)
         {
-            var result = _productManager.GetByUnitPrice(1500, 1500);
-            foreach (var product in result)
+            
+            foreach (var product in _productManager.GetProductDetails())
             {
-                Console.WriteLine("{0}--{1}--{2}", product.ProductName, product.UnitPrice,
-                    product.UnitsInStock);
+                Console.WriteLine(product.ProductName+"/"+ product.CategoryName);
             }
         }
     }

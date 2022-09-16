@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Abstract
 {
@@ -13,6 +14,7 @@ namespace Business.Abstract
         List<Product> GetAllByCategoryId(int id);
 
         List<Product> GetByUnitPrice(decimal min, decimal max);
+        List<ProductDetailDto> GetProductDetails();
 
         void Add(Product product);
     }
