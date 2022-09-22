@@ -13,7 +13,7 @@ namespace ConsoleUI
             //Data Transformation Object
             ProductManager _productManager = new ProductManager(new EfProductDal());
             //GetByUnitPriceTest(_productManager);
-            //ProductTest(_productManager);
+            ProductTest(_productManager);
             //CategoryTest();
         }
 
@@ -28,7 +28,7 @@ namespace ConsoleUI
 
         private static void GetByUnitPriceTest(ProductManager _productManager)
         {
-            foreach (var product in _productManager.GetByUnitPrice(40, 100))
+            foreach (var product in _productManager.GetByUnitPrice(40, 100).Data)
             {
                 Console.WriteLine(product.ProductName);
             }
@@ -44,11 +44,19 @@ namespace ConsoleUI
 
         private static void ProductTest(ProductManager _productManager)
         {
-            
-            foreach (var product in _productManager.GetProductDetails())
+            var result = _productManager.GetProductDetails();
+            if (result.Success==true)
             {
-                Console.WriteLine(product.ProductName+"/"+ product.CategoryName);
+                foreach (var product in result.Data )
+                {
+                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
         }
     }
 }
