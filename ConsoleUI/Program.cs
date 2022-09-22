@@ -10,9 +10,10 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //Data Transformation Object
             ProductManager _productManager = new ProductManager(new EfProductDal());
             //GetByUnitPriceTest(_productManager);
-            ProductTest(_productManager);
+            //ProductTest(_productManager);
             //CategoryTest();
         }
 

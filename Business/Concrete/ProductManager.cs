@@ -1,10 +1,11 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
-using DataAccess.Abstract;
+ using Core.Utilities.Results;
+ using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -42,9 +43,20 @@ namespace Business.Concrete
             return _productDal.GetProductDetails();
         }
 
-        public void Add(Product product)
+        public Product GetById(int productId)
         {
+            return _productDal.Get(p => p.ProductId == productId);
+        }
+
+        public IResult Add(Product product)
+        {
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult("Product name must contain at least 2 characters");
+            }
             _productDal.Add(product);
+
+            return new SuccessResult("Product Added!");
         }
     }
 }
